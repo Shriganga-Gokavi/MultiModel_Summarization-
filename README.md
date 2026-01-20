@@ -84,7 +84,53 @@ Evaluation is performed **batch-wise on the test set** using generated summaries
 - Batch-wise tokenization (`.pt` files)  
 - Model fine-tuning  
 - Summary generation  
-- ROUGE evaluation  
+- ROUGE evaluation
 
+### Execution:
+
+  step1_clone_repository: "Clone the GitHub repository to your local machine"
+    
+    commands:
+      - git clone https://github.com/Shriganga-Gokavi/MultiModel_Summarization-.git
+      - cd MultiModel_Summarization-
+
+  step2_open_in_colab: "paste required model url and run in collab"
+  
+    notebooks:
+    
+      - model: FLAN-T5
+        url: https://colab.research.google.com/github/Shriganga-Gokavi/MultiModel_Summarization-/blob/main/flan-t5.ipynb
+
+      - model: LED
+        url: https://colab.research.google.com/github/Shriganga-Gokavi/MultiModel_Summarization-/blob/main/led.ipynb
+
+      - model: Long-T5
+        url: https://colab.research.google.com/github/Shriganga-Gokavi/MultiModel_Summarization-/blob/main/longt5.ipynb
+
+      - model: Gemma
+        url: https://colab.research.google.com/github/Shriganga-Gokavi/MultiModel_Summarization-/blob/main/gemma.ipynb
+
+      - model: LLaMA
+        url: https://colab.research.google.com/github/Shriganga-Gokavi/MultiModel_Summarization-/blob/main/llama.ipynb
+
+      - model: Mistral
+        url: https://colab.research.google.com/github/Shriganga-Gokavi/MultiModel_Summarization-/blob/main/mistral.ipynb
+
+      - model: PRIMERA
+        url: https://colab.research.google.com/github/Shriganga-Gokavi/MultiModel_Summarization-/blob/main/PRIMERA.ipynb
+
+      - model: GPT-2
+        url: https://colab.research.google.com/github/Shriganga-Gokavi/MultiModel_Summarization-/blob/main/gpt2.ipynb
+   step3_install_dependencies: "Install required Python libraries in Google Colab"
+   
+          !pip install transformers rouge-score sentencepiece beautifulsoup4 pandas scikit-learn torch
+
+
+step4_mount_google_drive: "Mount Google Drive to access the dataset"
+
+
+  
+    from google.colab import drive
+    drive.mount('/content/drive')
 
 
