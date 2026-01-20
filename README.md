@@ -1,2 +1,90 @@
-# MultiModel_Summarization-
-Multi-model transformer system for automatic news article summarization with training and ROUGE evaluation pipelines
+# 📰 Multi-Model News Article Summarization using Transformers
+
+## 📌 Project Overview
+This project implements an end-to-end system for **abstractive news article summarization** using multiple state-of-the-art **transformer-based models**.
+
+The objective is to automatically generate concise and meaningful summaries from long news articles and to **compare the performance of different architectures**, especially for long-document handling.
+
+The system:
+
+- Cleans and preprocesses raw news articles
+- Performs batch-wise tokenization for memory-efficient training
+- Fine-tunes multiple transformer models
+- Evaluates summaries using standard **ROUGE metrics**
+- Supports long-document summarization using specialized models
+- Is optimized to run on **Google Colab + Google Drive**
+
+---
+
+## 📂 Dataset Information
+
+- **Dataset Type**: News Article Summarization Dataset  
+- **Format**: Excel / CSV  
+- **Columns Used**:
+  - `article_text` – Full news article  
+  - `human_summary` – Reference (gold) summary  
+
+Due to GitHub file size limits and data licensing, the dataset is **not included** in this repository.
+
+### 📥 How to Use Your Own Dataset
+
+1. Prepare a dataset containing:
+   - `article_text`
+   - `human_summary`
+2. Save it as `.xlsx` or `.csv`
+3. Upload it to Google Drive
+4. Update the dataset path in the notebook: DATA_PATH = "/content/drive/MyDrive/your_dataset.xlsx"
+## 🧠 Models Implemented
+
+This project includes training and evaluation notebooks for the following models:
+
+### 1️⃣ FLAN-T5 (Small)
+Instruction-tuned encoder-decoder model for efficient summarization.
+
+### 2️⃣ Long-T5
+Designed for handling longer input sequences than standard T5.
+
+### 3️⃣ LED (Longformer Encoder-Decoder)
+Optimized for **very long documents** using sparse attention and global tokens.
+
+### 4️⃣ PRIMERA
+Model specialized for multi-document and long-document summarization.
+
+### 5️⃣ GPT-2
+Decoder-only baseline for abstractive summarization.
+
+### 6️⃣ Mistral
+High-performance modern decoder-only transformer model.
+
+### 7️⃣ LLaMA
+Large-scale foundational language model fine-tuned for summarization.
+
+### 8️⃣ Gemma
+Lightweight open LLM optimized for efficient fine-tuning.
+
+---
+
+## 📊 Evaluation Metrics
+
+Each trained model is evaluated using:
+
+- ROUGE-1 (F1 & Precision)
+- ROUGE-2 (F1 & Precision)
+- ROUGE-L (F1 & Precision)
+
+Evaluation is performed **batch-wise on the test set** using generated summaries compared against reference summaries.
+
+---
+
+## 📈 Processing Pipeline
+
+- Dataset loading from Google Drive  
+- Text cleaning (HTML removal, URLs, emails, extra spaces)  
+- Train / Test split  
+- Batch-wise tokenization (`.pt` files)  
+- Model fine-tuning  
+- Summary generation  
+- ROUGE evaluation  
+
+
+
