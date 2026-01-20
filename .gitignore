@@ -205,3 +205,52 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+# =========================
+# Datasets
+# =========================
+*.csv
+*.xlsx
+*.tsv
+data/
+dataset/
+datasets/
+
+# =========================
+# Tokenized batches (PyTorch)
+# =========================
+*.pt
+tokenized_*/
+tokenized_flan_t5_small_data/
+tokenized_led_data/
+tokenized_longt5_data/
+
+# =========================
+# Trained models / checkpoints
+# =========================
+*_trained*/
+*_finetuned*/
+flan_t5_small_finetune_trained/
+led_finetuned_model/
+longt5_finetune_trained/
+checkpoints/
+models/
+
+# =========================
+# HuggingFace cache
+# =========================
+.cache/huggingface/
+.cache/torch/
+
+# =========================
+# Google Colab
+# =========================
+content/
+drive/
+
+# =========================
+# Large output files
+# =========================
+*.bin
+*.safetensors
+*.ckpt
+*.h5
