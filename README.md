@@ -75,6 +75,20 @@ Each trained model is evaluated using:
 Evaluation is performed **batch-wise on the test set** using generated summaries compared against reference summaries.
 
 ---
+## 📁 Evaluation Results
+
+The aggregated ROUGE evaluation results (F1 and Precision scores for all models) are stored in:
+
+
+This file contains:
+
+- ROUGE-1 F1 & Precision  
+- ROUGE-2 F1 & Precision  
+- ROUGE-L F1 & Precision  
+
+These values are used to generate comparative performance plots across models using Python (pandas + seaborn / matplotlib).
+
+The CSV file is included in this repository for reproducibility and result verification.
 
 ## 📈 Processing Pipeline
 
@@ -85,6 +99,8 @@ Evaluation is performed **batch-wise on the test set** using generated summaries
 - Model fine-tuning  
 - Summary generation  
 - ROUGE evaluation
+- Aggregation of ROUGE scores into CSV for visualization
+
 
 ### Execution:
 
@@ -121,6 +137,9 @@ Evaluation is performed **batch-wise on the test set** using generated summaries
 
       - model: GPT-2
         url: https://colab.research.google.com/github/Shriganga-Gokavi/MultiModel_Summarization-/blob/main/gpt2.ipynb
+        
+      - compare:using graphs
+        url:https://colab.research.google.com/github/Shriganga-Gokavi/MultiModel_Summarization-/blob/main/comparision.ipynb
    step3_install_dependencies: "Install required Python libraries in Google Colab"
    
           !pip install transformers rouge-score sentencepiece beautifulsoup4 pandas scikit-learn torch
