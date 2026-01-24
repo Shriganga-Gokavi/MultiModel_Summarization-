@@ -63,6 +63,47 @@ Large-scale foundational language model fine-tuned for summarization.
 Lightweight open LLM optimized for efficient fine-tuning.
 
 ---
+---
+
+## 🧪 Novel Model Proposal: Article-Conditioned Decoder Training (Mistral-ASG)
+
+In addition to the baseline models above, this project introduces a **novel training strategy for decoder-only models**, tailored for the NewsSumm dataset and Indian news clusters.
+
+### 🔑 Core Idea
+
+Instead of training the decoder only on reference summaries, we train it to generate summaries **conditioned directly on the full article text**:
+
+> **Input:** `article_text`  
+> **Target:** `human_summary`
+
+This forces the decoder to learn strong source grounding before abstraction.
+
+### 🧠 Why this helps
+
+- Improves factual consistency and entity coverage  
+- Reduces hallucination in long multi-document inputs  
+- Better captures Indian news structure (locations, politics, events)  
+- Works with existing LLM backbones (no architecture change required)
+
+### 🏗 Implementation
+
+- Backbone: **Mistral-7B** (decoder-only)  
+- Fine-tuning: **QLoRA (4-bit)**  
+- Training format: Article → Summary  
+
+### 📈 Results (ROUGE-F1)
+
+| Training Strategy | ROUGE-1 | ROUGE-2 | ROUGE-L |
+|-------------------|---------|----------|----------|
+| Summary-only | 0.1137 | 0.0271 | 0.0749 |
+| **Article → Summary (Proposed)** | **0.5254** | **0.3050** | **0.3951** |
+
+This represents more than **4× improvement on ROUGE-1** and **10× on ROUGE-2**, demonstrating the importance of article-conditioned supervision.
+
+**Proposed model name:** `Mistral-ASG` (Article-Supervised Generator)
+
+---
+
 
 ## 📊 Evaluation Metrics
 
@@ -140,7 +181,13 @@ The CSV file is included in this repository for reproducibility and result verif
         
       - compare:using graphs
         url:https://colab.research.google.com/github/Shriganga-Gokavi/MultiModel_Summarization-/blob/main/comparision.ipynb
+
+      - model: Novel Model (Mistral-ASG)
+        url:https://colab.research.google.com/github/Shriganga-Gokavi/MultiModel_Summarization-/blob/main/novel_model.ipynb
+  
    step3_install_dependencies: "Install required Python libraries in Google Colab"
+
+     
    
           !pip install transformers rouge-score sentencepiece beautifulsoup4 pandas scikit-learn torch
 
